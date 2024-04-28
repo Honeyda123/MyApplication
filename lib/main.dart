@@ -1,11 +1,11 @@
 
-import 'package:firstproject/home.dart';
+import 'package:firstproject/onBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:firebase_core/firebase_core.dart';
-import 'Driver.dart';
-import 'signIn.dart';
-import 'signUp.dart';
+import 'views/Driver.dart';
+import 'views/authentication/signIn.dart';
+import 'views/authentication/signUp.dart';
 import 'package:flutter/services.dart';
 import 'package:animate_do/animate_do.dart';
 Future<void> main() async {

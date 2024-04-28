@@ -1,5 +1,5 @@
-import 'package:firstproject/signIn.dart';
-import 'package:firstproject/signUp.dart';
+import 'package:firstproject/views/authentication/signIn.dart';
+import 'package:firstproject/views/authentication/signUp.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,9 +10,10 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
+
             decoration:const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/images.jpg"),
+                image: AssetImage("assets/images/optima1.jpg"),
                 fit: BoxFit.cover,
               ),
             ),

@@ -1,9 +1,10 @@
 import 'package:firstproject/components/settings_card.dart';
+import 'package:firstproject/views/settings/MyEarning_settings.dart';
 import 'package:firstproject/views/settings/documents_settings.dart';
 import 'package:firstproject/views/settings/profile_settings.dart';
 import 'package:flutter/material.dart';
-
 import '../../components/custom_navigation_bar.dart';
+import 'cars_page.dart';
 
 class settingsPage extends StatefulWidget {
   const settingsPage({super.key});
@@ -29,61 +30,60 @@ class _settingsPageState extends State<settingsPage> {
             elevation: 20.00, // Supprimer l'ombre de l'appBar
             centerTitle: true,
           ),
-          backgroundColor: Colors
-              .deepOrangeAccent, // Couleur transparente pour un aspect sans bordure
-          elevation: 20.00, // Supprimer l'ombre de l'appBar
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              settingsCard(
-                  title: 'Profile Settings',
-                  icon: Icons.settings,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Documents',
-                  icon: Icons.document_scanner_sharp,
-                  navigator: const documents_settings()),
-              settingsCard(
-                  title: 'My Earnings',
-                  icon: Icons.monetization_on,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Convert to Rider',
-                  icon: Icons.fire_truck,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Cars',
-                  icon: Icons.car_crash,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Refer And Earn',
-                  icon: Icons.monetization_on_sharp,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'SOS',
-                  icon: Icons.fire_truck,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Push Notifications',
-                  icon: Icons.notifications,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'Complain',
-                  icon: Icons.bug_report,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'About Us',
-                  icon: Icons.info,
-                  navigator: const ProfileSettings()),
-              settingsCard(
-                  title: 'LogOut',
-                  icon: Icons.logout,
-                  navigator: const ProfileSettings()),
-            ],
-          ),
-          bottomNavigationBar: customNavBar(index: 3)),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                settingsCard(
+                    title: 'Profile Settings',
+                    icon: Icons.settings,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'Documents',
+                    icon: Icons.document_scanner_sharp,
+                    path: const documents_settings()),
+                settingsCard(
+                    title: 'My Earnings',
+                    icon: Icons.monetization_on,
+                    path: const MyEarnings()),
+                settingsCard(
+                    title: 'Convert to Rider',
+                    icon: Icons.fire_truck,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'Cars',
+                    icon: Icons.car_crash,
+                    path: const CarsPage()),
+                settingsCard(
+                    title: 'Refer And Earn',
+                    icon: Icons.monetization_on_sharp,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'SOS',
+                    icon: Icons.fire_truck,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'Push Notifications',
+                    icon: Icons.notifications,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'Complain',
+                    icon: Icons.bug_report,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'About Us',
+                    icon: Icons.info,
+                    path: const ProfileSettings()),
+                settingsCard(
+                    title: 'LogOut',
+                    icon: Icons.logout,
+                    path: const ProfileSettings()),
+              ],
+            )),
+          bottomNavigationBar: customNavBar(index: 3),
+      ),
+
     );
   }
 }
+
+

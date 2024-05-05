@@ -39,62 +39,76 @@ class SignupPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Inscription'),
       ),
-      body: Container(
-        //color: Colors.deepPurpleAccent,
-        //padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+
+      body:  Stack(
           children: [
-            TextFormField(
-              controller: nomController,
-              decoration: InputDecoration(labelText: 'Nom'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: prenomController,
-              decoration: InputDecoration(labelText: 'Prénom'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: telephoneController,
-              decoration: InputDecoration(labelText: 'Téléphone'),
-              keyboardType: TextInputType.phone,
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: adresseController,
-              decoration: InputDecoration(labelText: 'Adresse'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: paysController,
-              decoration: InputDecoration(labelText: 'Pays'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: typeUtilisateurController,
-              decoration: InputDecoration(labelText: 'Type d\'utilisateur'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: motDePasseController,
-              decoration: InputDecoration(labelText: 'Mot de passe'),
-              validator:(value){
-                if(value!.isEmpty){
-                  return "champs invalide";
-                }
-                if (value.length>10){
-                  return"le champs n'est pas etre sup 10";
-                }
-            const SizedBox(height: 16.0);
-            ElevatedButton(
-              onPressed: inscrireUtilisateur,
-              child: Text('S\'inscrire'),
-            );})
-          ],
-        ),
-      ),
-    );
+      Container(
+      decoration:const BoxDecoration(
+      image: DecorationImage(
+
+          image: AssetImage("assets/images/optima1.jpg"),
+          fit: BoxFit.contain,
+           ),
+           ),
+       ),
+    // Overlay with opacity to make text more readable
+    Container(
+    color: Colors.black.withOpacity(0.4),
+    ),
+
+            Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+              TextFormField(
+                controller: nomController,
+                decoration: InputDecoration(labelText: 'Nom'),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: prenomController,
+                decoration: InputDecoration(labelText: 'Prénom'),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: telephoneController,
+                decoration: InputDecoration(labelText: 'Téléphone'),
+                keyboardType: TextInputType.phone,
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: adresseController,
+                decoration: InputDecoration(labelText: 'Adresse'),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: paysController,
+                decoration: InputDecoration(labelText: 'Pays'),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: typeUtilisateurController,
+                decoration: InputDecoration(labelText: 'Type d\'utilisateur'),
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: motDePasseController,
+                decoration: InputDecoration(labelText: 'Mot de passe'),
+                validator:(value){
+                  if(value!.isEmpty){
+                    return "champs invalide";
+                  }
+                  if (value.length>10){
+                    return"le champs n'est pas etre sup 10";
+                  }
+              const SizedBox(height: 16.0);
+              ElevatedButton(
+                onPressed: inscrireUtilisateur,
+                child: Text('S\'inscrire'),
+              );})])
+            )],
+          ),
+      );
   }
 }
 

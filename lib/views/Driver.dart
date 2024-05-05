@@ -16,31 +16,33 @@ class Driver extends StatefulWidget {
 class _SBottomNavigationBarState extends State<Driver> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Home',
-            style: TextStyle(
-              color: Colors.black,
-            ), // Couleur du titre
-          ),
-          backgroundColor: Colors
-              .deepOrangeAccent, // Couleur transparente pour un aspect sans bordure
-          elevation: 20.00, // Supprimer l'ombre de l'appBar
-          centerTitle: true,
-        ),
-        body: FlutterMap(
-          options: const MapOptions(
-            initialCenter: LatLng(33.892166, 9.561555499999997),
-            initialZoom: 5.0,
-          ),
-          children: [
-            TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              userAgentPackageName: 'com.example.app',
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Home',
+              style: TextStyle(
+                color: Colors.black,
+              ), // Couleur du titre
             ),
-          ],
-        ),
-        bottomNavigationBar:  customNavBar(index: 0,));
+            backgroundColor: Colors
+                .deepOrangeAccent, // Couleur transparente pour un aspect sans bordure
+            elevation: 20.00, // Supprimer l'ombre de l'appBar
+            centerTitle: true,
+          ),
+          body: FlutterMap(
+            options: const MapOptions(
+              initialCenter: LatLng(33.892166, 9.561555499999997),
+              initialZoom: 5.0,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.example.app',
+              ),
+            ],
+          ),
+          bottomNavigationBar:  customNavBar(index: 0,)),
+    );
   }
 }

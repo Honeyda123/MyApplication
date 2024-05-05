@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class settingsCard extends StatelessWidget {
-  late String title ;
-  late IconData icon ;
-  late Widget navigator ;
-   settingsCard ({super.key, required this.title, required this.icon, required this.navigator});
+  late String title;
+  late IconData icon;
+  late Widget path;
+  settingsCard(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.path});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class settingsCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => navigator),
+            MaterialPageRoute(builder: (context) => path),
           );
         },
       ),

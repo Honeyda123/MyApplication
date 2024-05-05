@@ -1,4 +1,5 @@
 import 'package:firstproject/components/settings_card.dart';
+import 'package:firstproject/views/settings/documents_settings.dart';
 import 'package:firstproject/views/settings/profile_settings.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,10 @@ class _settingsPageState extends State<settingsPage> {
                   title: 'Profile Settings',
                   icon: Icons.settings,
                   navigator: const ProfileSettings()),
+              settingsCard(
+                  title: 'Documents',
+                  icon: Icons.document_scanner_sharp,
+                  navigator: const documents_settings()),
               settingsCard(
                   title: 'My Earnings',
                   icon: Icons.monetization_on,

@@ -39,6 +39,8 @@ dependencies:
   
   #A composable, Future-based library for making HTTP requests.
   http: ^1.2.1
+  #A package that wraps platform-specific persistent storage
+  shared_preferences: ^2.2.3
 
 
 

@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firstproject/global/config/api/request.dart';
 import 'package:firstproject/global/modal/login_response_modal.dart';
 import 'package:firstproject/global/services/http_service.dart';
 import 'package:firstproject/views/authentication/ForgetPassword.dart';
+import 'package:firstproject/views/authentication/access_token_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/views/mybookings.dart';
 import 'package:http/http.dart' as http;
@@ -267,8 +269,16 @@ class _SignInState extends State<SignIn> {
                                       Map<String, dynamic> newResponse = {
                                         'access_token':
                                             value[0].rider!.apiToken,
-                                        // 'expires_in': value[0].expiresIn
+                                        'expires_in': 31536000
                                       };
+
+                                      HttpRequest.tokenFromLocalStorage =
+                                          value[0].rider!.apiToken;
+
+                                      await AccessTokenController()
+                                          .saveLoginResponseToLocal(
+                                              newResponse);
+
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(

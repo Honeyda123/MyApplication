@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-
 /// [SBottomNavigationBar] class describe the [BottomNavigationBar] widget details code
 /// ***************************************************************
 class Driver extends StatefulWidget {
@@ -42,7 +41,9 @@ class _SBottomNavigationBarState extends State<Driver> {
               ),
             ],
           ),
-          bottomNavigationBar:  customNavBar(index: 0,)),
+          bottomNavigationBar: customNavBar(
+            index: 0,
+          )),
     );
   }
 }

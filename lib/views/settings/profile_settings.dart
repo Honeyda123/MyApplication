@@ -48,16 +48,34 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      ListTileWidget(title: 'Email', subtitle: 'Test@gmail.com', icon: Icons.email, iconBtn: Icons.edit, onpressed: null,),
-                      ListTileWidget(title: 'Phone', subtitle: '123456798', icon: Icons.phone, iconBtn: Icons.edit, onpressed: null,),
-                      ListTileWidget(title: 'Language', subtitle: 'English', icon: Icons.language, iconBtn: Icons.arrow_downward, onpressed: null,),
+                      ListTileWidget(
+                        title: 'Email',
+                        subtitle: 'Test@gmail.com',
+                        icon: Icons.email,
+                        iconBtn: Icons.edit,
+                        onpressed: null,
+                      ),
+                      ListTileWidget(
+                        title: 'Phone',
+                        subtitle: '123456798',
+                        icon: Icons.phone,
+                        iconBtn: Icons.edit,
+                        onpressed: null,
+                      ),
+                      ListTileWidget(
+                        title: 'Language',
+                        subtitle: 'English',
+                        icon: Icons.language,
+                        iconBtn: Icons.arrow_downward,
+                        onpressed: null,
+                      ),
                       Card(
                         shadowColor: Colors.white60,
                         child: ListTile(
                           title: Text('Referral ID'),
                           subtitle: Text('SIWBG'),
                           leading: Icon(Icons.perm_identity),
-                          onTap: (){},
+                          onTap: () {},
                         ),
                       ),
                       Card(
@@ -66,7 +84,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                           title: Text('Vehicule Type'),
                           subtitle: Text('PICKUP TRUCK'),
                           leading: Icon(Icons.fire_truck),
-                          onTap: (){},
+                          onTap: () {},
                         ),
                       ),
                       Card(
@@ -83,7 +101,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                             ],
                           ),
                           leading: Icon(Icons.star),
-                          onTap: (){},
+                          onTap: () {},
                         ),
                       ),
                     ],
@@ -96,7 +114,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 elevation: 2,
                 backgroundColor: Colors.red,
               ),
-              onPressed: () { },
+              onPressed: () {},
               child: const Text('Delete Account'),
             )
           ],
@@ -106,14 +124,19 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   }
 }
 
-
 class ListTileWidget extends StatelessWidget {
   String title;
   String subtitle;
   IconData icon;
   IconData iconBtn;
   void onpressed;
-  ListTileWidget({super.key, required  this.title, required this.subtitle, required this.icon, required this.iconBtn, required  this.onpressed});
+  ListTileWidget(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.icon,
+      required this.iconBtn,
+      required this.onpressed});
 
   @override
   Widget build(BuildContext context) {
@@ -133,4 +156,3 @@ class ListTileWidget extends StatelessWidget {
     );
   }
 }
-

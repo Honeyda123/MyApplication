@@ -1,3 +1,5 @@
+import 'package:firstproject/views/settings/addMoney.dart';
+import 'package:firstproject/views/settings/withDraw.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_navigation_bar.dart';
@@ -9,7 +11,8 @@ class MyWallet extends StatefulWidget {
   State<MyWallet> createState() => _MyWalletState();
 }
 
-class _MyWalletState extends State<MyWallet> with SingleTickerProviderStateMixin {
+class _MyWalletState extends State<MyWallet>
+    with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -57,23 +60,40 @@ class _MyWalletState extends State<MyWallet> with SingleTickerProviderStateMixin
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => addMoney()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                             elevation: 2,
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                            backgroundColor: Colors.green
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            backgroundColor: Colors.green),
+                        child: Text(
+                          'ADD MONEY',
+                          style: TextStyle(color: Colors.white),
                         ),
-                        child: Text('ADD MONEY', style: TextStyle(color: Colors.white),),
                       ),
                       const SizedBox(width: 10),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => drawMoney()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                             elevation: 2,
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                            backgroundColor: Colors.red
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            backgroundColor: Colors.red),
+                        child: Text(
+                          'WITHDRAW',
+                          style: TextStyle(color: Colors.white),
                         ),
-                        child: Text('WITHDRAW', style: TextStyle(color: Colors.white),),
                       ),
                     ],
                   )
@@ -90,9 +110,9 @@ class _MyWalletState extends State<MyWallet> with SingleTickerProviderStateMixin
               indicatorColor: Colors.orange,
               controller: tabController,
               tabs: const [
-                Tab(icon: Icon(Icons.assignment), text: "Nouveaux"),
-                Tab(icon: Icon(Icons.playlist_play), text: "Encours"),
-                Tab(icon: Icon(Icons.verified_user), text: "Validé"),
+                Tab(icon: Icon(Icons.assignment), text: "CREDITED"),
+                Tab(icon: Icon(Icons.playlist_play), text: "DEBITED"),
+                Tab(icon: Icon(Icons.verified_user), text: "WITHDRAWN"),
               ],
             ),
             Expanded(

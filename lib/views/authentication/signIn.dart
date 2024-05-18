@@ -1,4 +1,6 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firstproject/global/modal/login_response_modal.dart';
+import 'package:firstproject/global/services/http_service.dart';
 import 'package:firstproject/views/authentication/ForgetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/views/mybookings.dart';
@@ -6,7 +8,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 Future<Map<String, dynamic>> loginUser(String email, String password) async {
-  final String apiUrl = 'https://tms.eco-fret.com/api/login-driver?mobile=mertgucluer@gmail.com&password=000000'; // Remplacez par l'URL de votre API de connexion
+  final String apiUrl =
+      'https://tms.eco-fret.com/api/login-driver?mobile=mertgucluer@gmail.com&password=000000'; // Remplacez par l'URL de votre API de connexion
 
   final response = await http.post(
     Uri.parse(apiUrl),
@@ -27,13 +30,23 @@ Future<Map<String, dynamic>> loginUser(String email, String password) async {
   }
 }
 
-class SignIn extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+class SignIn extends StatefulWidget {
+  const SignIn({Key? key}) : super(key: key);
 
-  SignIn({Key? key}) : super(key: key);
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  HttpService httpService = HttpService();
+
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController phoneController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +66,23 @@ class SignIn extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   FadeInUp(
-                    duration: Duration(milliseconds: 1000),
-                    child: Text(
+                    duration: const Duration(milliseconds: 1000),
+                    child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.white, fontSize: 40),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   FadeInUp(
-                    duration: Duration(milliseconds: 1300),
-                    child: Text(
+                    duration: const Duration(milliseconds: 1300),
+                    child: const Text(
                       "Welcome Back",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
@@ -77,11 +90,11 @@ class SignIn extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60),
@@ -94,15 +107,15 @@ class SignIn extends StatelessWidget {
                       key: formKey,
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 60),
+                          const SizedBox(height: 60),
                           FadeInUp(
-                            duration: Duration(milliseconds: 1400),
+                            duration: const Duration(milliseconds: 1400),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
-                                  BoxShadow(
+                                  const BoxShadow(
                                     color: Color.fromRGBO(225, 95, 27, .3),
                                     blurRadius: 20,
                                     offset: Offset(0, 10),
@@ -112,7 +125,7 @@ class SignIn extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       border: Border(
                                         bottom: BorderSide(
@@ -132,15 +145,16 @@ class SignIn extends StatelessWidget {
                                         }
                                         return null;
                                       },
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: "Email",
-                                        hintStyle: TextStyle(color: Colors.grey),
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey),
                                         border: InputBorder.none,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       border: Border(
                                         bottom: BorderSide(
@@ -160,15 +174,16 @@ class SignIn extends StatelessWidget {
                                         return null;
                                       },
                                       keyboardType: TextInputType.phone,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: "Phone Number",
-                                        hintStyle: TextStyle(color: Colors.grey),
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey),
                                         border: InputBorder.none,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       border: Border(
                                         bottom: BorderSide(
@@ -184,16 +199,18 @@ class SignIn extends StatelessWidget {
                                         }
                                         // Regular expression to match password format:
                                         // At least one lowercase character, one uppercase character, and one digit
-                                        RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$');
-                                        if (!regex.hasMatch(value)) {
-                                          return "Password must contain at least one lowercase, one uppercase, and one digit";
-                                        }
+                                        // RegExp regex = RegExp(
+                                        //     r'^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$');
+                                        // if (!regex.hasMatch(value)) {
+                                        //   return "Password must contain at least one lowercase, one uppercase, and one digit";
+                                        // }
                                         return null;
                                       },
                                       obscureText: true,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: "Password",
-                                        hintStyle: TextStyle(color: Colors.grey),
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey),
                                         border: InputBorder.none,
                                       ),
                                     ),
@@ -202,10 +219,11 @@ class SignIn extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           FadeInUp(
-                            duration: Duration(milliseconds: 1500),
-                            child: TextButton( // Change Text to TextButton
+                            duration: const Duration(milliseconds: 1500),
+                            child: TextButton(
+                              // Change Text to TextButton
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -214,24 +232,51 @@ class SignIn extends StatelessWidget {
                                   ),
                                 );
                               },
-                              child: Text( // Change Text to TextButton
+                              child: const Text(
+                                // Change Text to TextButton
                                 "Forgot Password?",
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ),
                           ),
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           FadeInUp(
-                            duration: Duration(milliseconds: 1600),
+                            duration: const Duration(milliseconds: 1600),
                             child: MaterialButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MyBookings(),
-                                    ),
-                                  );
+                                  httpService
+                                      .authenticateUser(
+                                          mobile: emailController.text,
+                                          password: passwordController.text)
+                                      .then((List<LoginResponse> value) async {
+                                    if (value[0].status == 'failed') {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          backgroundColor: Colors.red,
+                                          content: Text(
+                                            'Invalid Credentials!',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      Map<String, dynamic> newResponse = {
+                                        'access_token':
+                                            value[0].rider!.apiToken,
+                                        // 'expires_in': value[0].expiresIn
+                                      };
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (ctx) =>
+                                                const MyBookings()),
+                                      );
+                                    }
+                                  });
                                 }
                               },
                               height: 50,
@@ -239,7 +284,7 @@ class SignIn extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Login",
                                   style: TextStyle(
@@ -250,20 +295,20 @@ class SignIn extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 50),
+                          const SizedBox(height: 50),
                           FadeInUp(
-                            duration: Duration(milliseconds: 1700),
-                            child: Text(
+                            duration: const Duration(milliseconds: 1700),
+                            child: const Text(
                               "Continue with social media",
                               style: TextStyle(color: Colors.grey),
                             ),
                           ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Row(
                             children: <Widget>[
                               Expanded(
                                 child: FadeInUp(
-                                  duration: Duration(milliseconds: 1800),
+                                  duration: const Duration(milliseconds: 1800),
                                   child: MaterialButton(
                                     onPressed: () {},
                                     height: 50,
@@ -271,7 +316,7 @@ class SignIn extends StatelessWidget {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50),
                                     ),
-                                    child: Center(
+                                    child: const Center(
                                       child: Text(
                                         "Facebook",
                                         style: TextStyle(
@@ -283,10 +328,10 @@ class SignIn extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 30),
+                              const SizedBox(width: 30),
                               Expanded(
                                 child: FadeInUp(
-                                  duration: Duration(milliseconds: 1900),
+                                  duration: const Duration(milliseconds: 1900),
                                   child: MaterialButton(
                                     onPressed: () {},
                                     height: 50,

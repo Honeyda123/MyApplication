@@ -36,6 +36,9 @@ dependencies:
   latlong2: ^0.9.1
   #cloud_firestore: ^4.16.1
   image_picker: ^1.0.7
+  
+  #A composable, Future-based library for making HTTP requests.
+  http: ^1.2.1
 
 
 
